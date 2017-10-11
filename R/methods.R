@@ -123,7 +123,6 @@ coef.linreg <- function(x){
 }
 
 
-
 #' @title A method that creates a summary of the linreg-function
 #' @description A method that creates a summary of the linreg-function
 #' @param x linreg object
@@ -155,7 +154,6 @@ summary.linreg <- function(x){
     }
     tmp
   }
-
   rownames(tmp) = names(x$reg_coef)
   colnames(tmp) = c("Estimate", "Std. Error", "t value", "Pr(>|t|)","")
 
