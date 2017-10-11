@@ -94,6 +94,8 @@ plot.linreg <- function(x, ...) {
 #' @param x linreg object.
 #' @param ... other arguments.
 #' @return vector of residuals.
+
+
 resid<-function(x,...)UseMethod("resid")
 resid.linreg <- function(x){return(x$resi)
 }
@@ -105,6 +107,8 @@ resid.linreg <- function(x){return(x$resi)
 #' @param x linreg object
 #' @param ... other arguments
 #' @return vector of predictions.
+
+
 pred<-function(x,...)UseMethod("pred")
 pred.linreg <- function(x){
   return(x$fitted_values)
@@ -117,6 +121,8 @@ pred.linreg <- function(x){
 #' @param x linreg object
 #' @param ... other arguments
 #' @return named vector of coefficients.
+
+
 coef<-function(x,...)UseMethod("coef")
 coef.linreg <- function(x){
   return(x$reg_coef)
@@ -128,6 +134,8 @@ coef.linreg <- function(x){
 #' @param x linreg object
 #' @param ... other arguments
 #' @return linreg_summary object, can be printed.
+
+
 summary<-function(x,...)UseMethod("summary")
 summary.linreg <- function(x){
   tmp = c(as.matrix(x$reg_coef),as.matrix(x$var_reg_coef),x$t_each_coef,x$p_values)
