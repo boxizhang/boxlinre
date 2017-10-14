@@ -11,7 +11,7 @@
 
 <meta name="author" content="Boxi Zhang, Priya Pullolickal" />
 
-<meta name="date" content="2017-10-02" />
+<meta name="date" content="2017-10-14" />
 
 <title>boxlinre</title>
 
@@ -119,23 +119,15 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">boxlinre</h1>
 <h4 class="author"><em>Boxi Zhang, Priya Pullolickal</em></h4>
-<h4 class="date"><em>2017-10-02</em></h4>
+<h4 class="date"><em>2017-10-14</em></h4>
 
 </div>
 
 
 <div id="load-library-and-dataset" class="section level3">
 <h3>1. Load library and dataset</h3>
-<pre class="r"><code>library(boxlinre)</code></pre>
-<pre><code>## 
-## Attaching package: 'boxlinre'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     coef, resid</code></pre>
-<pre><code>## The following object is masked from 'package:base':
-## 
-##     summary</code></pre>
-<pre class="r"><code>library(ggplot2)
+<pre class="r"><code>library(boxlinre)
+library(ggplot2)
 library(gridExtra)
 
 data(iris)</code></pre>
@@ -143,25 +135,25 @@ data(iris)</code></pre>
 <div id="create-formula-and-fitting-the-model" class="section level3">
 <h3>2. Create formula and fitting the model</h3>
 <pre class="r"><code>formula = Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width
-m = linreg(formula, iris)
-summary(m)</code></pre>
+m = linreg$new( Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data=iris)
+linreg_mod$summary()</code></pre>
 <pre><code>## Call: 
-## linreg(formula = Sepal.Width + Petal.Length + Petal.Width, data = iris)
+## linreg(formula = Sepal.Width + Sepal.Length, data = iris)
 ## Coefficients: 
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)    1.8560     0.2508  7.4010        0 ***
-## Sepal.Width    0.6508     0.0666  9.7654        0 ***
-## Petal.Length   0.7091     0.0567 12.5025        0 ***
-## Petal.Width   -0.5565     0.1275 -4.3629        0 ***
-## Residual standard error: 0.3145 on 146 degrees of freedom</code></pre>
+##              Estimate Std. Error  t value Pr(&gt;|t|)    
+## (Intercept)   -2.5248     0.5634  -4.4810        0 ***
+## Sepal.Width   -1.3386     0.1224 -10.9402        0 ***
+## Sepal.Length   1.7756     0.0644  27.5692        0 ***
+## Residual standard error: 0.6465 on 147 degrees of freedom</code></pre>
 <p>The model is fitted and we can see the summary about coefficients.</p>
 </div>
 <div id="inspect-the-residuals" class="section level3">
 <h3>3. Inspect the residuals</h3>
 <p>First the residuals:</p>
-<pre class="r"><code>summary(resid(m))</code></pre>
+<pre class="r"><code>resi&lt;-linreg_mod$resid()
+summary(resi)</code></pre>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -0.82816 -0.21989  0.01875  0.00000  0.19709  0.84570</code></pre>
+## -1.25582 -0.46922 -0.05741  0.00000  0.45530  1.75599</code></pre>
 </div>
 
 

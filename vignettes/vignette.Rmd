@@ -21,8 +21,8 @@ data(iris)
 ### 2. Create formula and fitting the model
 ```{r}
 formula = Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width
-m = linreg(formula, iris)
-summary(m)
+m = linreg$new( Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data=iris)
+m$summary()
 ```
 The model is fitted and we can see the summary about coefficients.
 
@@ -31,5 +31,6 @@ The model is fitted and we can see the summary about coefficients.
 First the residuals:
 
 ```{r}
-summary(resid(m))
+resi<-m$resid()
+summary(resi)
 ```
